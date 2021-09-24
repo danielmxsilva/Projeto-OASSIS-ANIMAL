@@ -1,332 +1,403 @@
 <?php include('config.php');?>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Best Fit Gym | Itupeva-SP</title>
-        <link rel="shortcut icon" type="icon/png" href="<?php echo INCLUDE_PATH;
-        $url = isset($_GET['url']) ? $_GET['url'] : '';
-    switch ($url) {
-        case '':
-            echo 'img/icon.png"';
-            break;
-        case 'home':
-            echo 'img/icon.png';
-            break;
-        case 'abest':
-            echo 'img/icone-best.ico"';
-            break;
-        case 'planos':
-            echo 'img/icone-best.ico"';
-            break;
-        case 'aulas':
-            echo 'img/icone-best.ico"';
-            break;
-        case 'contato':
-            echo 'img/icone-best.ico"';
-            break;
-        case 'programas':
-            echo 'img/icone-best.ico"';
-            break;
-        case 'profissionais':
-            echo 'img/icone-best.ico"';
-            break;
-        case 'perguntas-frequentes':
-            echo 'img/icone-best.ico"';
-            break;
-        default:
-            echo 'img/icone-best.ico"';
-            break;
-    }
-        ?>">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
-        <meta name="description" content="Buscando sempre o seu melhor, cuidando de seu corpo e mantendo sua saúde em dia.">
-        <meta name="keywords" content="best,fit,gym,academia,itupeva,sao paulo,bestfitgym">
-        <meta name="author" content="damix.code">
-        <meta property="og:title" content="Best Fit Gym | Itupeva-SP">
-        <meta property="og:description" content="Buscando sempre o seu melhor, cuidando de seu corpo e mantendo sua saúde em dia.">
-        <meta property="og:image" content="<?php echo INCLUDE_PATH;?>img/img-best-og.jpg">
-        <meta property="og:url" content="http://bestfitgym.com.br">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-        <link href="<?php echo INCLUDE_PATH;?>css/jquery.fancybox.css" rel="stylesheet">
-        <link href="<?php echo INCLUDE_PATH;?>css/slick.css" rel="stylesheet">
-        <link href="<?php echo INCLUDE_PATH;?>css/style.css" rel="stylesheet">
-        <script src="//code-sa1.jivosite.com/widget/t0QmI0hrMH" async></script>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-E1PXR5YYBD"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
+<?php Site::updateUsuarioOnline();?>
+<?php Site::contador();?>
+<?php Painel::limparApadrinhado()?>
+<?php
+	$infoSiteHome = Mysql::conectar()->prepare('SELECT * FROM `tb_site.home`');
+	$infoSiteHome->execute();
+	$infoSiteHome = $infoSiteHome->fetch();
 
-          gtag('config', 'G-E1PXR5YYBD');
-        </script>
-    </head>
+
+	$infoSiteAjuda = Mysql::conectar()->prepare("SELECT * FROM `tb_site.ajuda`");
+	$infoSiteAjuda->execute();
+	$infoSiteAjuda = $infoSiteAjuda->fetch();
+
+	$infoSiteContato = Mysql::conectar()->prepare("SELECT * FROM `tb_site.contato`");
+	$infoSiteContato->execute();
+	$infoSiteContato = $infoSiteContato->fetch();
+
+	$infoSiteGaleria = Mysql::conectar()->prepare("SELECT * FROM `tb_site.galeria`");
+	$infoSiteGaleria->execute();
+	$infoSiteGaleria = $infoSiteGaleria->fetch();
+
+	$infoSiteDoar = Mysql::conectar()->prepare("SELECT * FROM `tb_config.doar`");
+	$infoSiteDoar->execute();
+	$infoSiteDoar = $infoSiteDoar->fetch();
+
+	$infoSiteApadrinhar = Mysql::conectar()->prepare("SELECT * FROM `tb_config.apadrinhar`");
+	$infoSiteApadrinhar->execute();
+	$infoSiteApadrinhar = $infoSiteApadrinhar->fetch();
+
+	$infoSiteAdotar = Mysql::conectar()->prepare("SELECT * FROM `tb_config.adotar`");
+	$infoSiteAdotar->execute();
+	$infoSiteAdotar = $infoSiteAdotar->fetch();
+
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>
+	<?php 
+		@$url = explode('/', $_GET['url']);
+		
+		if($url[0] == 'noticias'){
+			if(isset($url[2])){
+				$sql = Mysql::conectar()->prepare("SELECT * FROM `tb_site.noticias` WHERE slug = ?");
+				$sql->execute(array($url[2]));
+				$conteudo = $sql->fetchAll();
+				foreach($conteudo as $key => $value){
+					echo substr(strip_tags($value['titulo']),0,255);
+				}
+			}else{
+				echo 'ONG - Oassis Animal';
+			}
+		}else{
+			echo 'ONG - Oassis Animal';
+		}
+		
+	?>
+	</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+	<meta name="author" content="damix.code">
+	<meta name="description" content="
+	<?php 
+		@$url = explode('/', $_GET['url']);
+		
+		if($url[0] == 'noticias'){
+			if(isset($url[1])){
+				$sql = Mysql::conectar()->prepare("SELECT * FROM `tb_site.noticias` WHERE slug = ?");
+				$sql->execute(array($url[2]));
+				$conteudo = $sql->fetchAll();
+				foreach($conteudo as $key => $value){
+					echo substr(strip_tags($value['conteudo']),0,255);
+				}
+				}else{
+					echo 'Resgate,Conscientização,Adoção,Castração, Somos uma ONG privada atuamos com proteção e saúde de animais, Venha nos conhecer, Faça uma doação, Apadrinhe ou adote, Precisamos da sua ajuda, conheça nossa história, descubra como atuamos na cidade, nossos feitos e ajudas... ';
+				}	
+		}else{
+			echo 'Resgate,Conscientização,Adoção,Castração, Somos uma ONG privada atuamos com proteção e saúde de animais, Venha nos conhecer, Faça uma doação, Apadrinhe ou adote, Precisamos da sua ajuda, conheça nossa história, descubra como atuamos na cidade, nossos feitos e ajudas... ';
+		}
+		
+	?>
+	 ">
+	<meta name="og:title" content="<?php 
+		@$url = explode('/', $_GET['url']);
+		
+		if($url[0] == 'noticias'){
+			if(isset($url[2])){
+				$sql = Mysql::conectar()->prepare("SELECT * FROM `tb_site.noticias` WHERE slug = ?");
+				$sql->execute(array($url[2]));
+				$conteudo = $sql->fetchAll();
+				foreach($conteudo as $key => $value){
+					echo substr(strip_tags($value['titulo']),0,255);
+				}
+			}else{
+				echo 'ONG - Oassis Animal';
+			}
+		}else{
+			echo 'ONG - Oassis Animal';
+		}
+		
+	?>">
+	<meta name="og:description" content="<?php 
+		@$url = explode('/', $_GET['url']);
+		
+		if($url[0] == 'noticias'){
+			if(isset($url[1])){
+				$sql = Mysql::conectar()->prepare("SELECT * FROM `tb_site.noticias` WHERE slug = ?");
+				$sql->execute(array($url[2]));
+				$conteudo = $sql->fetchAll();
+				foreach($conteudo as $key => $value){
+					echo substr(strip_tags($value['conteudo']),0,255);
+				}
+				}else{
+					echo 'Resgate,Conscientização,Adoção,Castração, Somos uma ONG privada atuamos com proteção e saúde de animais, Venha nos conhecer, Faça uma doação, Apadrinhe ou adote, Precisamos da sua ajuda, conheça nossa história, descubra como atuamos na cidade, nossos feitos e ajudas... ';
+				}	
+		}else{
+			echo 'Resgate,Conscientização,Adoção,Castração, Somos uma ONG privada atuamos com proteção e saúde de animais, Venha nos conhecer, Faça uma doação, Apadrinhe ou adote, Precisamos da sua ajuda, conheça nossa história, descubra como atuamos na cidade, nossos feitos e ajudas... ';
+		}
+		
+	?>">
+	<meta name="og:image" content="<?php 
+		@$url = explode('/', $_GET['url']);
+		
+		if($url[0] == 'noticias'){
+			if(isset($url[1])){
+				$sql = Mysql::conectar()->prepare("SELECT * FROM `tb_site.noticias` WHERE slug = ?");
+				$sql->execute(array($url[2]));
+				$conteudo = $sql->fetchAll();
+				foreach($conteudo as $key => $value){
+					echo INCLUDE_PATH_PAINEL.'uploads/'.$value['capa'];
+				}
+			}else{
+				echo INCLUDE_PATH.'img/logo-oasis-single.png';
+			}	
+		}else{
+			echo INCLUDE_PATH.'img/logo-oasis-single.png';
+		}
+		
+	?>">
+	<meta name="og:url" content="<?php echo INCLUDE_PATH.@$_GET['url']?>">
+	<link href="<?php echo INCLUDE_PATH;?>css/slick.css" rel="stylesheet">
+	<link href="<?php echo INCLUDE_PATH;?>css/jquery.fancybox.css" rel="stylesheet" type="text/css">
+	<link href="<?php echo INCLUDE_PATH;?>css/style.css" rel="stylesheet" type="text/css">
+	<link rel="shortcut icon" type="icon/png" href="<?php echo INCLUDE_PATH;?>img/logo-oasis-cor-branco.png">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Gluten:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<script src="<?php echo INCLUDE_PATH;?>js/jquery.js"></script>
+</head>
 <body>
 
-    <div class="overlay-loading">
-        <img src="<?php echo INCLUDE_PATH ?>img/ajax-loader.gif" />
-    </div><!--overlay-loading-->
+	<?php
 
-    <div class="sucess-box">
-        <p>Formulário Enviado Com Sucesso!</p>
-    </div><!--sucess-box-->
+	$url = isset($_GET['url']) ? $_GET['url'] : 'home';
+	switch ($url) {
+		case 'ajuda-home':
+			echo '<target target="ajuda-home">';
+			break;
+		case 'fotos':
+			echo '<target target="fotos">';
+			break;
+	}
 
-    <div class="erro-box">
-        <p>Ocorreu Algum Erro!</p>
-    </div><!--erro-box-->
+	?>
 
-    <header>
-    <nav class="menu-mobile">
-        <div class="icone-menu"></div>
-        <ul>
-            <li><a <?php
-                        $url = isset($_GET['url']) ? $_GET['url'] : '';
-                        switch ($url) {
-                            case 'abest':
-                                echo 'class="text-decoration"';
-                                break;
-                            default:
-                                echo '"';
-                                break;
-                        }
-                    ?> href="<?php echo INCLUDE_PATH;?>abest">A BEST</a></li>
-                    <li><a <?php
-                        $url = isset($_GET['url']) ? $_GET['url'] : '';
-                        switch ($url) {
-                            case 'planos':
-                                echo 'class="text-decoration"';
-                                break;
-                            default:
-                                echo '"';
-                                break;
-                        }
-                    ?> href="<?php echo INCLUDE_PATH;?>planos">PLANOS</a></li>
-                    <li><a <?php
-                        $url = isset($_GET['url']) ? $_GET['url'] : '';
-                        switch ($url) {
-                            case 'aulas':
-                                echo 'class="text-decoration"';
-                                break;
-                            default:
-                                echo '"';
-                                break;
-                        }
-                    ?> href="<?php echo INCLUDE_PATH;?>aulas">GRADE DE AULAS</a></li>
-                    <li><a <?php
-                        $url = isset($_GET['url']) ? $_GET['url'] : '';
-                        switch ($url) {
-                            case 'contato':
-                                echo 'class="text-decoration"';
-                                break;
-                            default:
-                                echo '"';
-                                break;
-                        }
-                    ?> href="<?php echo INCLUDE_PATH;?>contato">CONTATO</a></li>
-            <li class="btn-prg"><a href="<?php echo INCLUDE_PATH;?>programas">PROGRAMAS</a></li>
-        </ul>
-    </nav><!--menu-desktop-->
-        <div class="container">
-            <div class="logo">
-                <a href="<?php echo INCLUDE_PATH;?>index.php"><img src="<?php echo INCLUDE_PATH;?>img/header/logo.png"></a>
-            </div><!--logo-->
-            <nav class="menu-desktop">
-                <ul>
-                    <li><a <?php
-                        $url = isset($_GET['url']) ? $_GET['url'] : '';
-                        switch ($url) {
-                            case 'abest':
-                                echo 'class="text-decoration"';
-                                break;
-                            default:
-                                echo '"';
-                                break;
-                        }
-                    ?> href="<?php echo INCLUDE_PATH;?>abest">A BEST</a></li>
-                    <li><a <?php
-                        $url = isset($_GET['url']) ? $_GET['url'] : '';
-                        switch ($url) {
-                            case 'planos':
-                                echo 'class="text-decoration"';
-                                break;
-                            default:
-                                echo '"';
-                                break;
-                        }
-                    ?> href="<?php echo INCLUDE_PATH;?>planos">PLANOS</a></li>
-                    <li><a <?php
-                        $url = isset($_GET['url']) ? $_GET['url'] : '';
-                        switch ($url) {
-                            case 'aulas':
-                                echo 'class="text-decoration"';
-                                break;
-                            default:
-                                echo '"';
-                                break;
-                        }
-                    ?> href="<?php echo INCLUDE_PATH;?>aulas">GRADE DE AULAS</a></li>
-                    <li><a <?php
-                        $url = isset($_GET['url']) ? $_GET['url'] : '';
-                        switch ($url) {
-                            case 'contato':
-                                echo 'class="text-decoration"';
-                                break;
-                            default:
-                                echo '"';
-                                break;
-                        }
-                    ?> href="<?php echo INCLUDE_PATH;?>contato">CONTATO</a></li>
-                    <li class="btn-prg"><a href="<?php echo INCLUDE_PATH;?>programas">PROGRAMAS</a></li>
-                </ul>
-            </nav><!--menu-desktop-->
-            <div class="clear"></div>
-        </div><!--container-->
-    </header>
-    <div <?php $url = isset($_GET['url']) ? $_GET['url'] : '';
+	<header <?php
+		$url = isset($_GET['url'][0]) ? $_GET['url'] : '';
+		@$urlPar = explode('/',$_GET['url']);
+		switch($urlPar[0]){
+			case 'apadrinhar-animal':
+				echo 'style="background-image: url(../img/fundo-banners-site/fundo-header.png);"';
+				break;
+			case 'adotar-animal':
+				echo 'style="background-image: url(../img/fundo-banners-site/fundo-header.png);!important;"';
+				break;
+		}
+		switch ($url) {
+			case 'home':
+				echo 'style="background-color: #D2B064;"';
+				break;
+			case '':
+				echo 'style="background-color: #D2B064;"';
+				break;
+			case 'noticias':
+				echo 'style="background-color: #D2B064;"';
+				break;
+			case 'ajuda-home':
+				echo 'style="background-color: #D2B064;"';
+				break;
+			case 'fotos':
+				echo 'style="background-color: #D2B064;"';
+				break;
+			case 'doar':
+				echo 'style="background-image: url(img/fundo-banners-site/fundo-header.png);"';
+				break;
+			case 'enviar-foto':
+				echo 'style="background-image: url(img/fundo-banners-site/fundo-header.png);"';
+				break;
+			case 'apadrinhar-animais':
+				echo 'style="background-image: url(img/fundo-banners-site/fundo-header.png);"';
+				break;
+			case 'adotar':
+				echo 'style="background-image: url(img/fundo-banners-site/fundo-header.png);"';
+				break;
+			case 'contato':
+				echo 'style="background-image: url(img/fundo-banners-site/fundo-header.png);"';
+				break;
+			case 'apadrinhar':
+				echo 'style="background-image: url(img/fundo-banners-site/fundo-header.png);"';
+				break;
+			default:
+				echo 'style="background-color: #D2B064;"';
+				break;
+		};
+		
+	?>>
+		<div class="icone-menu"></div>
+		<nav class="menu-mobile">
+			<img class="logo-header" src="<?php echo INCLUDE_PATH;?>img/logo-oasis-cor.png">
+			<ul>
+				<li><a href="<?php echo INCLUDE_PATH;?>home">HOME</a></li>
+				<span></span>
+				<li><a href="<?php echo INCLUDE_PATH?>ajuda-home">AJUDAR</a></li>
+				<span></span>
+				<li><a href="<?php echo INCLUDE_PATH;?>noticias">NOTICIAS</a></li>
+				<span></span>
+				<li><a href="<?php echo INCLUDE_PATH?>fotos">FOTOS</a></li>
+				<span></span>
+				<li><a href="<?php echo INCLUDE_PATH?>noticias/dicas">DICAS</a></li>
+				<span></span>
+				<li><a href="<?php echo INCLUDE_PATH;?>contato">CONTATO</a></li>
+			</ul>
+		</nav><!--menu-mobile-->
 
-        switch ($url) {
-            case '':
-                echo 'class="overlay"';
-                break;
-            
-            case 'home':
-                echo 'class="overlay"';
-                break;
-            case 'abest':
-                echo 'class="overlay-best"';
-                break;
-            case 'planos':
-                echo 'class="overlay-best"';
-                break;
-            case 'aulas':
-                echo 'class="overlay-best"';
-                break;
-            case 'contato':
-                echo 'class="overlay-best"';
-                break;
-            case 'natacao':
-                echo 'class="overlay-best"';
-                break;
-            case 'programas':
-                echo 'class="overlay-programas"';
-                break;
-            case 'profissionais':
-                echo 'class="overlay-profision"';
-                break;
-            case 'perguntas-frequentes':
-                echo 'class="overlay-best"';
-                break;
-            case 'aula-experimental':
-                echo 'class="overlay-best"';
-                break;
-            case 'form-planos':
-                echo 'class="overlay-best"';
-                break;
-            case 'ballet':
-                echo 'class="overlay-off"';
-                break;
-            case 'circuito-funcional':
-                echo 'class="overlay-off"';
-                break;
-            case 'fitdance':
-                echo 'class="overlay-off"';
-                break;
-            case 'jiujitsu':
-                echo 'class="overlay-off"';
-                break;
-            case 'kickbox':
-                echo 'class="overlay-off"';
-                break;
-            case 'ritmos':
-                echo 'class="overlay-off"';
-                break;
-            case 'step':
-                echo 'class="overlay-off"';
-                break;
-            default:
-                echo 'class="overlay-best"';
-                break;
-        }?>></div>
-    <?php
-        $url = isset($_GET['url']) ? $_GET['url'] : 'home';
-        $urlPar = INCLUDE_PATH;
+		<div class="container-header">
+			<div class="menu-desktop direita-nav">
+				<nav class="nav-direita">
+					<ul>
+						<li><a href="<?php echo INCLUDE_PATH;?>home">HOME</a></li>
+						<span></span>
+						<li><a href="<?php echo INCLUDE_PATH?>ajuda-home">AJUDAR</a></li>
+						<span></span>
+						<li><a href="<?php echo INCLUDE_PATH;?>noticias">NOTICIAS</a></li>
+					</ul>
+				</nav><!--nav-direita-->
+			</div><!--menu-desktop-->
+			<img class="logo-header img-desktop" src="<?php echo INCLUDE_PATH;?>img/home/logo-oasis.png">
+			<div class="menu-desktop esquerda-nav">
+				<nav class="nav-esquerda">
+					<ul>
+						<li><a href="<?php echo INCLUDE_PATH?>fotos">FOTOS</a></li>
+						<span></span>
+						<li><a href="<?php echo INCLUDE_PATH?>noticias/dicas">DICAS</a></li>
+						<span></span>
+						<li><a href="<?php echo INCLUDE_PATH;?>contato">CONTATO</a></li>
+					</ul>
+				</nav><!--nav-esquerda-->
+			</div><!--menu-desktop-->
+		</div><!--container-header-->
+	</header>
 
-        if(file_exists('pages/'.$url.'.php')){
-            include('pages/'.$url.'.php');
-        }else{
-            echo '<script>location.href="'.$urlPar.'"</script>';
-            die(); 
-        }
-    ?>
-    <div <?php
-    $url = isset($_GET['url']) ? $_GET['url'] : '';
-    switch ($url) {
-        case '':
-            echo 'class="none"';
-            break;
-        case 'aula-experimental':
-            echo 'class="none"';
-            break;
-        case 'home':
-            echo 'class="none"';
-            break;
-        case 'abest':
-            echo 'class="btn-exp"';
-            break;
-        case 'planos':
-            echo 'class="btn-exp"';
-            break;
-        case 'aulas':
-            echo 'class="btn-exp"';
-            break;
-        case 'contato':
-            echo 'class="btn-exp"';
-            break;
-        case 'programas':
-            echo 'class="btn-exp"';
-            break;
-        default:
-            echo 'class="btn-exp"';
-            break;
-    }
+	<div class="container-principal">
+			<?php
+			
+				$url = isset($_GET['url']) ? $_GET['url'] : 'home';
+				if(file_exists('pages/'.$url.'.php')){
+					include('pages/'.$url.'.php');
+				}else{
+					$urlPar = explode('/',$url)[0];
+					if($urlPar != 'noticias' && $urlPar != 'apadrinhar-animal' && $urlPar != 'adotar-animal'){
+						$pageof = true;
+						include('pages/home.php');
+					}else{
+						if($urlPar == 'apadrinhar-animal'){
+							include('pages/apadrinhar.php');
+						}else if($urlPar == 'adotar-animal'){
+							include('pages/adotar-animal.php');
+						}else{
+							include('pages/noticias.php');
+						}		
+					}
 
-?>>
-    <a href="<?php echo INCLUDE_PATH;?>aula-experimental" class="pulse"></a>
-</div>
- 
-    <script src="<?php echo INCLUDE_PATH;?>js/jquery.js"></script>
-    <script src="<?php echo INCLUDE_PATH;?>js/jquery.fancybox.js"></script>
-    <script>
+					
+				}
+				
+			?>
+	</div><!--container-principal-->
+
+	<footer class="footer-banner">
+
+		<div class="container">
+
+			<div class="footer-equipe">
+
+				<h3>NOSSA EQUIPE</h3>
+
+				<div class="equipe-single">
+
+				<?php
+				$sql = Mysql::conectar()->prepare("SELECT * FROM `tb_site.equipe` ORDER BY order_id ASC LIMIT 3");
+				$sql->execute();
+				$equipe = $sql->fetchAll();
+				foreach($equipe as $key => $value){
+				?>
+					<div class="wraper-equipe">
+						<img src="<?php echo INCLUDE_PATH_PAINEL?>uploads/<?php echo $value['foto']?>"><div class="equipe-wraper">
+							<p><?php echo $value['nome']?></p><p><?php echo $value['texto']?></p>
+						</div><!--equipe-wraper-->
+					</div><!--wraper-equipe-->
+				<?php } ?>
+
+				</div><!--equipe-single-->
+
+			</div><!--footer-equipe--><div class="social-footer">
+
+				<div class="ong-footer">
+					<img src="<?php echo INCLUDE_PATH?>img/logo-oasis-cor-branco.png"><div class="ong-wraper">
+						<h3><?php echo $infoSiteHome['ultimo_titulo'];?></h3>
+						<p><?php echo $infoSiteHome['ultimo_subtitulo'];?></p>
+					</div><!--ong-wraper-->
+				</div><!--ong-footer-->
+
+				<div class="ong-footer-social">
+					<a href=""><img src="<?php echo INCLUDE_PATH?>img/icon-insta.png"></a>
+					<a href=""><img src="<?php echo INCLUDE_PATH?>img/icon-mail.png"></a>
+					<a href=""><img src="<?php echo INCLUDE_PATH?>img/icon-whats.png"></a>
+					<a href=""><img src="<?php echo INCLUDE_PATH?>img/icon-facebook.png"></a>
+				</div><!--ong-footer-p-->
+
+			</div><!--social-footer-->
+
+		</div><!--container-->
+
+	</footer><!--footer-banner-->
+
+	<footer class="footer-last">
+		<div class="container">
+			<a href=""><img src="<?php echo INCLUDE_PATH?>img/logo-white.png"></a>
+		</div><!--container-->
+	</footer><!--footer-last-->
+
+	<script src="<?php echo INCLUDE_PATH;?>js/jquery.fancybox.js"></script>
+	<script src="<?php echo INCLUDE_PATH?>js/jquery.mask.js"></script>
+	<script>
         $(document).ready(function(){
-            $('.galeria-fotos').fancybox({
+
+        	$('body').click(function(e){
+        		e.stopPropagation();
+        		$('.info-plus').fadeOut();
+        	})
+
+        	$('.info-mais').click(function(e){
+        		e.stopPropagation();
+        		$('.info-plus').fadeIn();
+        	})
+        	
+        	if($('target').length > 0){
+				var elemento = '#'+$('target').attr('target');
+
+				var divScroll = $(elemento).offset().top;
+
+				$('html,body').animate({scrollTop:divScroll},2000);
+			};
+
+            $('.img-galeria-single').fancybox({
                 'openEffect':'elastic',
                 arrows:true
             });
+
+            $('.img-adotar-single').fancybox({
+            	'openEffect':'elastic',
+                arrows:true
+            });
+
+            $('input[name=valor_doar]').mask('0000000000');
         })
     </script>
-    <script src="<?php echo INCLUDE_PATH;?>js/slick.js"></script>
-    <script src="<?php echo INCLUDE_PATH;?>js/slider.js"></script>
-    <script src="<?php echo INCLUDE_PATH;?>js/menu.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCDIxxm6r_Lygi8XG1oCs_ZWyD4G2fPpSM"></script>
-    <script src="<?php echo INCLUDE_PATH;?>js/scripts.js"></script>
-    <script src="<?php echo INCLUDE_PATH;?>js/planos-script.js"></script>
-    <script src="<?php echo INCLUDE_PATH;?>js/programas.js"></script>
-    <script src="<?php echo INCLUDE_PATH;?>js/jquery.mask.js"></script>
-    <?php
-        if($url == 'contato'){
-    ?>
-    <script src="<?php echo INCLUDE_PATH;?>js/form-contato.js"></script>
-    <?php }?>
-    
-    <?php
-        if($url == 'aula-experimental'){
-    ?>
-    <script src="<?php echo INCLUDE_PATH;?>js/form-exp.js"></script>
-    <?php             
-        }
-    ?>
+	<script src="<?php echo INCLUDE_PATH;?>js/slider-pagina.js"></script>
+	<script src="<?php echo INCLUDE_PATH;?>js/slider.js"></script>
+	<script src="<?php echo INCLUDE_PATH;?>js/menu.js"></script>
+	<script>
+		$(function(){
+			var url = 'http://localhost/ong_site/';
+			$('.noticia-select').change(function(){
+				location.href=url+"noticias/"+$(this).val();
+			})
+		})
+	</script>
+	
+	<?php
+	
+		@$urlPage = $_GET['url'];
+
+		if($urlPage == 'apadrinhar-animais' || $urlPage == 'adotar'){
+			echo '<script src="'.INCLUDE_PATH.'js/galeria-js.js"></script>';
+		}
+
+	?>
+
 
 </body>
-
 </html>

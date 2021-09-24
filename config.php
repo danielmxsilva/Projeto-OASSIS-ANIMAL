@@ -1,19 +1,50 @@
 <?php
 
+	session_start();
+	ob_start();
+
+	date_default_timezone_set('America/Sao_Paulo');
+
 	$autoload = function($class){
 		include('classes/'.$class.'.php');
 	};
 
 	spl_autoload_register($autoload);
-
-
-	define('INCLUDE_PATH','http://localhost/site_best/');
 	
+	define('BASE_DIR_PAINEL',__DIR__.'/painel');
+	define('NOME_EMPRESA','OASSIS ANIMAL');
+	define('INCLUDE_PATH','http://localhost/ong_site/');
+	define('INCLUDE_PATH_PAINEL',INCLUDE_PATH.'painel/');
+	define('HOST','localhost');
+	define('USER','root');
+	define('PASSWORD','');
+	define('DATABASE','oassis');
 
-	/* 
-		conferir pasta ajax e classes (formularios.php) e (Email.php) além de da pasta vendor (foi adicionada a dependência phpmailer)
-	*/
-		/*
-		Config atualizado
-		*/
+
+	function pegaCargo($cargo){
+		return Painel::$cargos[$cargo];
+	}
+
+	function permissaoPagina($permissao){
+		if($_SESSION['cargo'] >= $permissao){
+			return;
+		}else{
+			include('pages/permissao-negada.php');
+		}
+	}
+
+	function permissaoInput($permissao,$valor,$value){
+		if($_SESSION['cargo'] >= $permissao){
+			echo 'type="submit" name="'.$valor.'" value="'.$value.'"';
+		}else{
+			echo 'disabled name="permissao" value="Sem Permissao"';
+		}
+	}
+
+	function recoverPost($post){
+		if(isset($_POST[$post])){
+			echo $_POST[$post];
+		}
+	}
+
 ?>

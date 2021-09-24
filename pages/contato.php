@@ -1,34 +1,68 @@
-<section class="contato">
-	
-</section><!--contato-->
-<div class="container-best">
-		<div class="box-title-planos">
-	    	<h1>CONTATO</h1>
-	    </div><!--box-title-->
-	    <div class="first-planos first-contato">
-	    	<p><b>Utilize </b> o formulário abaixo para entrar em contato com nossa Academia. Opcionalmente você poderá entrar em contato direto conosco em um de nossos contatos abaixo.</p>
-	    </div><!--first-planos-->
-	<div class="map-contato">
-        <div id="map"></div>
-    </div><!--map-wrap-->
-    <div class="wrap-form">
-    	<form method="POST">
-    		<input type="hidden" name="identificador" value="Contato" />
-    		<select name="Motivo">
-    			<option value="duvidas">Dúvidas</option>
-    			<option value="depoimentos">Depoimento</option>
-    			<option value="trabalhe conosco">Trabalhe Conosco</option>
-    			<option value="programas">Programas</option>
-    			<option value="sugestao">Sugestões</option>
-    			<option value="reclamacao">Reclamações</option>
-    			<option value="outro">Outros</option>
-    		</select>
-    		<input type="text" name="nome" placeholder="Nome Completo">
-    		<input type="text" name="telefone" placeholder="Telefone">
-    		<input type="text" name="email" placeholder="E-mail">
-    		<textarea placeholder="Mensagem.."></textarea>
-	    	<input type="submit" name="acao" value="ENVIAR">
-    	</form>
-    </div><!--wrap-form-->
-</div><!--container-best-->
-<?php include('footer.php')?>
+<div class="container fundo-doar">
+
+	<div class="title-section">
+		<div class="png-txt"></div>
+		<h2><?php echo $infoSiteContato['titulo']?></h2>
+		<p><?php echo $infoSiteContato['subtitulo']?></p>
+	</div><!--title-section-->
+
+</div><!--container-->
+
+<div class="container-principal">
+
+	<div class="container">
+
+		<?php
+			if(isset($_POST['acao'])){
+				$motivo = $_POST['motivo'];
+				$nome = $_POST['nome_contato'];
+				$email = $_POST['email_contato'];
+				$telefone = $_POST['whatsapp_contato'];
+				$data = date('Y-m-d');
+
+				if($nome == ''){
+					Painel::alert('erro','Adicione um nome para continuar');
+				}else if($email == ''){
+					Painel::alert('erro','Adicione um email para continuar');
+				}else if($telefone == ''){
+					Painel::alert('erro','Adicione um telefone para continuar');
+				}else{
+					$arr = ['motivo_contato'=>$motivo,'nome'=>$nome,'email'=>$email,'nome_tabela'=>'tb_config.contato','telefone'=>$telefone,'data'=>$data,'order_id'=>'0'];
+					Painel::insert($arr);
+					Painel::alert('sucesso','Enviado Com Sucesso!');
+				}
+			}
+		?>
+
+		<div class="wraper-doar">
+			<h3><?php echo $infoSiteContato['texto']?></h3>
+		</div><!--wraper-doar-->
+
+		<div class="wraper-doar">
+			<p>Agradecemos seu contato <span style="color: red;font-size: 20px;">&hearts;</span>, <b style="color:#FDCB58;">só preencher o formulário abaixo</b>. &#128516;</p>
+			<form method="POST" class="form-doar form-contato">
+				<p>Motivo Contato</p>
+				<select required name="motivo">
+					<option value="Patrocinio">Patrocinio</option>
+					<option value="Informações">Informações</option>
+					<option value="Sugestão">Sugestões</option>
+					<option value="Conhecer a ong">Conhecer a ONG</option>
+					<option value="Dúvidas">Dúvidas</option>
+					<option value="Solicitar um resgate animal">Solicitar um resgate animal</option>
+					<option value="Outro">Outro</option>
+				</select>
+				<p>Seu nome*</p>
+				<input type="text" name="nome_contato" required>
+				<p>Seu e-mail*</p>
+				<input type="text" name="email_contato" required>
+				<p>Seu whatsapp*</p>
+				<input class="text" type="text" name="whatsapp_contato" required>
+				<p>*Campos Obrigatórios</p>
+				<input class="btn-doar" type="submit" name="acao" value="ENVIAR">
+			</form>
+		</div><!--wraper-doar-->
+
+
+	</div><!--container-->
+
+</div><!--container-principal-->

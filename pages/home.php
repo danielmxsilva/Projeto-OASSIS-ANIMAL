@@ -1,120 +1,311 @@
-<section class="home">
-    <div class="container relative">
-    	<div class="chamada-header">
-    		<div class="chamada-header-h2">
-    			<h2>CUIDANDO DO<br> SEU BEM ESTAR.</h2>
-    			<p>Buscando sempre o seu melhor, cuidando de seu corpo e mantendo sua saúde em dia.</p>
-    		</div><!--chamada-header-h2-->
-    		<div class="chamada-header-btn">
-    			<a href="<?php echo INCLUDE_PATH;?>aula-experimental">AULA EXPERIMENTAL</a>
-    		</div><!--chamada-header-btn-->
-    	</div><!--chamada-header-->
-    </div><!--container-->
-    <div class="treinos">
-            <div class="container-treinos">
-                <div class="single-treinos ballet"><a href="<?php echo INCLUDE_PATH?>ballet"></a></div>
-                <div class="single-treinos circuit-funcion"><a href="<?php echo INCLUDE_PATH?>circuito-funcional"></a></div>
-                <div class="single-treinos fitdance"><a href="<?php echo INCLUDE_PATH?>fitdance"></a></div>
-                <div class="single-treinos jiujitsu"><a href="<?php echo INCLUDE_PATH?>jiujitsu"></a></div>
-                <div class="single-treinos kickbox"><a href="<?php echo INCLUDE_PATH?>kickbox"></a></div>
-                <div class="single-treinos ritmos"><a href="<?php echo INCLUDE_PATH?>ritmos"></a></div>
-                <div class="single-treinos step"><a href="<?php echo INCLUDE_PATH?>step"></a></div>
-            </div><!--container-treinos-->
-        </div><!--treinos-->
+<section class="container-home-bg">
+	<div class="container">
+		<div class="single-home-txt">
+			<h1>OLÁ EU SOU O <span class="h1-home">TITAN</span> <a href="#">descubra</a> como a OASSIS salvou minha VIDA!</h1>
+		</div><!--single-home-txt-->
+		<div class="single-home-btn">
+			<nav>
+				<ul>
+					<li>
+						<a href="<?php echo INCLUDE_PATH?>adotar">
+							<img src="<?php echo INCLUDE_PATH;?>img/home/adotar-icone.png">
+						ADOTAR
+						</a>
+					</li>
+					<li>
+						<a href="<?php echo INCLUDE_PATH?>apadrinhar-animais">
+							<img src="<?php echo INCLUDE_PATH;?>img/home/apadrinhar-icone.png">
+						APADRINHAR
+						</a>
+					</li>
+					<li>
+						<a href="<?php echo INCLUDE_PATH?>doar">
+							<img src="<?php echo INCLUDE_PATH;?>img/home/doar-icone.png">
+						DOAR
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div><!--single-home-btn-->
+	</div><!--container-->
+</section><!--container-home-->
 
-<section class="nosso-espaco">
-    <div class="container">
-        <div class="title">NOSSO ESPAÇO</div><!--title-->
-        <div class="txt-espaco">
-            <p>
-                Contamos com um amplo espaço sofisticado para acomodar todos os nossos alunos, com profissionais altamente qualificados para melhor auxilia-lo em seu desenvolvimento pessoal.
-            </p>
-        </div><!--txt-espaco-->
-        <div class="btn-chamada"><a href="<?php echo INCLUDE_PATH;?>abest">SAIBA MAIS</a></div>
-    </div><!--container-->
-</section><!--nosso-espaco-->
+<section class="nossa-historia">
+	<div class="container">
 
-<section class="natacao">
-    <div class="escuro-bg"></div>
-    <div class="container">
-        <div class="txt-natacao">
-            <h2>NATAÇÃO</h2>
-            <p>Adulto, Infantil, Hidroginástica Metodologia Gustavo Borges.</p>
-            <div class="btn-chamada"><a href="<?php echo INCLUDE_PATH;?>natacao">SAIBA MAIS</a></div>
-        </div><!--txt-natacao-->
-    </div><!--container-->
-</section><!--natacao-->
+		<div class="title-section">
+			<div class="png-txt"></div>
+			<h2><?php echo $infoSiteHome['titulo_1'];?></h2>
+			<p><?php echo $infoSiteHome['subtitulo_1'];?></p>
+		</div><!--title-section-->
 
-<section class="novidades">
-    <div class="container">
-        <div class="novidades-parte-1">
-            <div class="title">INSCREVA-SE<br/>E RECEBA<br/>NOVIDADES</div><!--title-->
-        </div>
-        <div class="novidades-parte-2">
-            <form method="POST">
-                <input type="hidden" name="identificador" value="Receber Novidades" />
-                <input type="text" name="email" placeholder="E-mail">
-                <input type="submit" name="acao" class="btn-chamada" value="RECEBER NOVIDADES">
-            </form>
-        </div>
-    </div><!--container-->
-</section><!--novidades-->
+		<div class="flex container-historia">
+			<div class="historia-txt w50">
+				<h3><?php echo $infoSiteHome['titulo_img'];?></h3>
+				<p><?php echo $infoSiteHome['conteudo'];?></p>
+			</div><!--historia-txt-->
+			<div class="historia-img w50">
+				<div class="background-img"></div>
+				<div class="wraper-img-container">
+					<div class="job-parent">
+						<div class="arrow-left"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-square-left" class="svg-inline--fa fa-caret-square-left fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 480H48c-26.51 0-48-21.49-48-48V80c0-26.51 21.49-48 48-48h352c26.51 0 48 21.49 48 48v352c0 26.51-21.49 48-48 48zM259.515 124.485l-123.03 123.03c-4.686 4.686-4.686 12.284 0 16.971l123.029 123.029c7.56 7.56 20.485 2.206 20.485-8.485V132.971c.001-10.691-12.925-16.045-20.484-8.486z"></path></svg></div>
+						<div class="arrow-right"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-square-right" class="svg-inline--fa fa-caret-square-right fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M48 32h352c26.51 0 48 21.49 48 48v352c0 26.51-21.49 48-48 48H48c-26.51 0-48-21.49-48-48V80c0-26.51 21.49-48 48-48zm140.485 355.515l123.029-123.029c4.686-4.686 4.686-12.284 0-16.971l-123.029-123.03c-7.56-7.56-20.485-2.206-20.485 8.485v246.059c0 10.691 12.926 16.045 20.485 8.486z"></path></svg></div>
+					<div class="nav-galeria">
+						<div class="nav-galeria-wraper">
+							<?php
+							$sql = Mysql::conectar()->prepare("SELECT * FROM `tb_foto.home` ORDER BY `order_id` ASC");
+							$sql->execute();
+							$foto = $sql->fetchAll();
+							foreach($foto as $key => $value){
+							?>
+							<div class="mini-img-wraper">
+								<div class="mini-img" style="background-image: url('<?php echo INCLUDE_PATH_PAINEL?>uploads/<?php echo $value['foto']?>');">
+								</div>
+							</div>
+							<?php } ?>
+						</div><!--nav-galeria-wraper-->
+					</div><!--nav-galeria-->
+					</div><!--job-parent-->
+				</div><!--wraper-img-container-->
+			</div><!--historia-img-->
+		</div><!--flex container-historia-->
 
-<section class="depoimentos">
-    <div class="container">
-        <div class="title">DEPOIMENTOS</div><!--title-->
-        <div class="depoimentos-wraper">
+	</div><!--container-->
+</section><!--nossa-historia-->
 
-            <div class="depoimentos-single">
-                <div class="depoimento-author">
-                    <div class="img-depoimento"><img src="img/depoimentos/depoimento-1.jpg"></div>
-                    <div class="nome-depoimento"><span>Daniel Mateus</span></div>
-                </div>
-                <div class="depoimento-texto">
-                    <p>Academia completa, aparelhos limpos, ambiente agradável, as músicas são muito bem selecionadas pra dar um gás nos treinos.</p>
-                </div><!--depoimento-texto-->
-            </div><!--depoimentos-single-->
+<section class="descubra">
+	<div class="container">
 
-            <div class="depoimentos-single">
-                <div class="depoimento-author">
-                    <div class="img-depoimento"><img src="img/depoimentos/depoimento-2.jpg"></div>
-                    <div class="nome-depoimento"><span>Fabiane Franco</span></div>
-                </div>
-                <div class="depoimento-texto">
-                    <p>Super recomendo!!! Espaço amplo, ótimos profissionais, todos muito atenciosos... As aulas de Fitdance arrasam ... Vale a pena conferir!.</p>
-                </div><!--depoimento-texto-->
-            </div><!--depoimentos-single-->
+		<div class="title-section">
+			<div class="png-txt"></div>
+			<h2><?php echo $infoSiteHome['titulo_2']?></h2>
+			<p><?php echo $infoSiteHome['subtitulo_2']?></p>
+		</div><!--title-section-->
 
-            <div class="depoimentos-single">
-                <div class="depoimento-author">
-                    <div class="img-depoimento"><img src="img/depoimentos/depoimento-3.jpg"></div>
-                    <div class="nome-depoimento"><span>Cristiane Toledo</span></div>
-                </div>
-                <div class="depoimento-texto">
-                    <p>Profissionalismo, dedicação, aulas ótimas e animadíssimas, muito organizado..</p>
-                </div><!--depoimento-texto-->
-            </div><!--depoimentos-single-->
+		<div class="wraper-fazemos">
+			<div class="fazemos-single">
+				<img src="<?php echo INCLUDE_PATH;?>img/sessao-1/conscientizacao-icone.png">
+				<h3><?php echo $infoSiteHome['titulo_icone_1']?></h3>
+				<p><?php echo $infoSiteHome['texto_icone_1']?></p>
+			</div><!--fazemos-single-->
+			<div class="fazemos-single">
+				<img src="<?php echo INCLUDE_PATH;?>img/sessao-1/castracao-icone.png">
+				<h3><?php echo $infoSiteHome['titulo_icone_2']?></h3>
+				<p><?php echo $infoSiteHome['texto_icone_2']?></p>
+			</div><!--fazemos-single-->
+			<div class="fazemos-single">
+				<img src="<?php echo INCLUDE_PATH;?>img/sessao-1/adocao-icone.png">
+				<h3><?php echo $infoSiteHome['titulo_icone_3']?></h3>
+				<p><?php echo $infoSiteHome['texto_icone_3']?></p>
+			</div><!--fazemos-single-->
+		</div><!--wraper-fazemos-->
 
-        </div><!--depoimentos-wraper-->
-    </div><!--container-->
-</section><!--depoimentos-->
+	</div><!--container-->
+</section><!--descubra-->
 
-<section class="local">
-    <div class="map-wrap">
-        <div id="map"></div>
-    </div><!--map-wrap-->
-    <div class="txt-map">
-        <div class="title">LOCALIZAÇÃO</div><!--title-->
-        <div class="txt-localizacao">
-            <a>Unidade Centro</a>
-            <a>Unidade AcquaMarine</a>
-            <a>Unidade Nova Monte Serrat</a>
-        </div><!--txt-localizacao-->
-    </div><!--txt-map-->
-</section><!--localizacao-->
+<?php include('pages/ajuda.php')?>
 
 
-<?php include('footer.php')?>
-</section><!--home-->
+<section class="galeria" id="fotos">
+
+	<div class="container">
+
+		<div class="title-section">
+			<div class="png-txt"></div>
+			<h2><?php echo $infoSiteGaleria['t_home']?></h2>
+			<p><?php echo $infoSiteGaleria['p_home']?></p>
+		</div><!--title-section-->
+
+		<div class="galeria-flex flex">
+
+			<div class="mural-ong">
+				<h2><?php echo $infoSiteGaleria['t_mural']?></h2>
+				<div class="galeria-wraper mural-galeria">
+					<?php
+						$sql = Mysql::conectar()->prepare("SELECT * FROM `tb_foto.mural` ORDER BY `order_id` DESC LIMIT 16");
+						$sql->execute();
+						$mural = $sql->fetchAll();
+
+						foreach($mural as $key => $value){
+					?>
+
+					<a rel="galeria-mural" class="img-galeria-single" href="<?php echo INCLUDE_PATH_PAINEL;?>uploads/<?php echo $value['foto']?>">
+						<img src="<?php echo INCLUDE_PATH_PAINEL;?>uploads/<?php echo $value['foto']?>">
+					</a>
+
+					<?php } ?>
+
+					<!--
+					<a rel="galeria-mural" class="img-galeria-single" href="<?php //echo INCLUDE_PATH;?>img/galeria/foto-com-moldura/mural-2.jpg">
+						<img src="<?php //echo INCLUDE_PATH;?>img/galeria/foto-com-moldura/mural-2.jpg">
+					</a>
+					<a rel="galeria-mural" class="img-galeria-single" href="<?php //echo INCLUDE_PATH;?>img/galeria/foto-com-moldura/mural-3.jpg">
+						<img src="<?php //echo INCLUDE_PATH;?>img/galeria/foto-com-moldura/mural-3.jpg">
+					</a>
+
+					<a rel="galeria-mural" class="img-galeria-single" href="<?php //echo INCLUDE_PATH;?>img/galeria/foto-com-moldura/mural-4.jpg">
+						<img src="<?php //echo INCLUDE_PATH;?>img/galeria/foto-com-moldura/mural-4.jpg">
+					</a>
+
+					<a rel="galeria-mural" class="img-galeria-single" href="<?php //echo INCLUDE_PATH;?>img/galeria/foto-com-moldura/mural-5.jpg">
+						<img src="<?php //echo INCLUDE_PATH;?>img/galeria/foto-com-moldura/mural-5.jpg">
+					</a>
+					<a rel="galeria-mural" class="img-galeria-single" href="<?php //echo INCLUDE_PATH;?>img/galeria/foto-com-moldura/mural-6.jpg">
+						<img src="<?php //echo INCLUDE_PATH;?>img/galeria/foto-com-moldura/mural-6.jpg">
+					</a>
+					<a rel="galeria-mural" class="img-galeria-single" href="<?php //echo INCLUDE_PATH;?>img/galeria/foto-com-moldura/mural-7.jpg">
+						<img src="<?php //echo INCLUDE_PATH;?>img/galeria/foto-com-moldura/mural-7.jpg">
+					</a>
+
+					<a rel="galeria-mural" class="img-galeria-single" href="<?php //echo INCLUDE_PATH;?>img/galeria/foto-com-moldura/mural-8.jpg">
+						<img src="<?php //echo INCLUDE_PATH;?>img/galeria/foto-com-moldura/mural-8.jpg">
+					</a>
+
+					<a rel="galeria-mural" class="img-galeria-single" href="<?php //echo INCLUDE_PATH;?>img/galeria/foto-com-moldura/mural-9.jpg">
+						<img src="<?php //echo INCLUDE_PATH;?>img/galeria/foto-com-moldura/mural-9.jpg">
+					</a>
+					<a rel="galeria-mural" class="img-galeria-single" href="<?php //echo INCLUDE_PATH;?>img/galeria/foto-com-moldura/mural-10.jpg">
+						<img src="<?php //echo INCLUDE_PATH;?>img/galeria/foto-com-moldura/mural-10.jpg">
+					</a>
+					<a rel="galeria-mural" class="img-galeria-single" href="<?php //echo INCLUDE_PATH;?>img/galeria/foto-com-moldura/mural-11.jpg">
+						<img src="<?php //echo INCLUDE_PATH;?>img/galeria/foto-com-moldura/mural-11.jpg">
+					</a>
+
+					<a rel="galeria-mural" class="img-galeria-single" href="<?php //echo INCLUDE_PATH;?>img/galeria/foto-com-moldura/mural-12.jpg">
+						<img src="<?php //echo INCLUDE_PATH;?>img/galeria/foto-com-moldura/mural-12.jpg">
+					</a>
+
+					<a rel="galeria-mural" class="img-galeria-single" href="<?php //echo INCLUDE_PATH;?>img/galeria/foto-com-moldura/mural-13.jpg">
+						<img src="<?php //echo INCLUDE_PATH;?>img/galeria/foto-com-moldura/mural-13.jpg">
+					</a>
+					<a rel="galeria-mural" class="img-galeria-single" href="<?php //echo INCLUDE_PATH;?>img/galeria/foto-com-moldura/mural-14.jpg">
+						<img src="<?php //echo INCLUDE_PATH;?>img/galeria/foto-com-moldura/mural-14.jpg">
+					</a>
+					<a rel="galeria-mural" class="img-galeria-single" href="<?php //echo INCLUDE_PATH;?>img/galeria/foto-com-moldura/mural-15.jpg">
+						<img src="<?php //echo INCLUDE_PATH;?>img/galeria/foto-com-moldura/mural-15.jpg">
+					</a>
+
+					<a rel="galeria-mural" class="img-galeria-single" href="<?php //echo INCLUDE_PATH;?>img/galeria/foto-com-moldura/mural-16.jpg">
+						<img src="<?php //echo INCLUDE_PATH;?>img/galeria/foto-com-moldura/mural-16.jpg">
+					</a>-->
+					
+				</div><!--galeria-wraper-->
+			</div><!--mural-ong-->	
+
+			<div class="galeria-ong">	
+				<h2><?php echo $infoSiteGaleria['t_galeria']?></h2>
+				<div class="galeria-wraper ong-galeria">
+
+					<?php
+					$sql = Mysql::conectar()->prepare("SELECT * FROM `tb_foto.galeria` ORDER BY `order_id` DESC LIMIT 16");
+					$sql->execute();
+					$galeria = $sql->fetchAll();
+
+					foreach($galeria as $key => $value){
+					?>
+
+					<a rel="galeria-ong" class="img-galeria-single" href="<?php echo INCLUDE_PATH_PAINEL;?>uploads/<?php echo $value['foto']?>">
+						<img src="<?php echo INCLUDE_PATH_PAINEL;?>uploads/<?php echo $value['foto']?>">
+					</a>
+
+					<?php } ?>
+
+					<!--
+					<a rel="galeria-ong" class="img-galeria-single" href="<?php //echo INCLUDE_PATH;?>img/galeria/img-ong-com-moldura/galeria-2.jpg">
+						<img src="<?php //echo INCLUDE_PATH;?>img/galeria/img-ong-com-moldura/galeria-2.jpg">
+					</a>
+					<a rel="galeria-ong" class="img-galeria-single" href="<?php //echo INCLUDE_PATH;?>img/galeria/img-ong-com-moldura/galeria-3.jpg">
+						<img src="<?php //echo INCLUDE_PATH;?>img/galeria/img-ong-com-moldura/galeria-3.jpg">
+					</a>
+
+					<a rel="galeria-ong" class="img-galeria-single" href="<?php //echo INCLUDE_PATH;?>img/galeria/img-ong-com-moldura/galeria-4.jpg">
+						<img src="<?php //echo INCLUDE_PATH;?>img/galeria/img-ong-com-moldura/galeria-4.jpg">
+					</a>
+
+					<a rel="galeria-ong" class="img-galeria-single" href="<?php //echo INCLUDE_PATH;?>img/galeria/img-ong-com-moldura/galeria-5.jpg">
+						<img src="<?php //echo INCLUDE_PATH;?>img/galeria/img-ong-com-moldura/galeria-5.jpg">
+					</a>
+					<a rel="galeria-ong" class="img-galeria-single" href="<?php //echo INCLUDE_PATH;?>img/galeria/img-ong-com-moldura/galeria-6.jpg">
+						<img src="<?php //echo INCLUDE_PATH;?>img/galeria/img-ong-com-moldura/galeria-6.jpg">
+					</a>
+					<a rel="galeria-ong" class="img-galeria-single" href="<?php //echo INCLUDE_PATH;?>img/galeria/img-ong-com-moldura/galeria-7.jpg">
+						<img src="<?php //echo INCLUDE_PATH;?>img/galeria/img-ong-com-moldura/galeria-7.jpg">
+					</a>
+
+					<a rel="galeria-ong" class="img-galeria-single" href="<?php //echo INCLUDE_PATH;?>img/galeria/img-ong-com-moldura/galeria-8.jpg">
+						<img src="<?php //echo INCLUDE_PATH;?>img/galeria/img-ong-com-moldura/galeria-8.jpg">
+					</a>
+
+					<a rel="galeria-ong" class="img-galeria-single" href="<?php //echo INCLUDE_PATH;?>img/galeria/img-ong-com-moldura/galeria-9.jpg">
+						<img src="<?php //echo INCLUDE_PATH;?>img/galeria/img-ong-com-moldura/galeria-9.jpg">
+					</a>
+					<a rel="galeria-ong" class="img-galeria-single" href="<?php //echo INCLUDE_PATH;?>img/galeria/img-ong-com-moldura/galeria-10.jpg">
+						<img src="<?php //echo INCLUDE_PATH;?>img/galeria/img-ong-com-moldura/galeria-10.jpg">
+					</a>
+					<a rel="galeria-ong" class="img-galeria-single" href="<?php //echo INCLUDE_PATH;?>img/galeria/img-ong-com-moldura/galeria-11.jpg">
+						<img src="<?php //echo INCLUDE_PATH;?>img/galeria/img-ong-com-moldura/galeria-11.jpg">
+					</a>
+
+					<a rel="galeria-ong" class="img-galeria-single" href="<?php //echo INCLUDE_PATH;?>img/galeria/img-ong-com-moldura/galeria-12.jpg">
+						<img src="<?php //echo INCLUDE_PATH;?>img/galeria/img-ong-com-moldura/galeria-12.jpg">
+					</a>
+
+					<a rel="galeria-ong" class="img-galeria-single" href="<?php //echo INCLUDE_PATH;?>img/galeria/img-ong-com-moldura/galeria-13.jpg">
+						<img src="<?php //echo INCLUDE_PATH;?>img/galeria/img-ong-com-moldura/galeria-13.jpg">
+					</a>
+					<a rel="galeria-ong" class="img-galeria-single" href="<?php //echo INCLUDE_PATH;?>img/galeria/img-ong-com-moldura/galeria-14.jpg">
+						<img src="<?php //echo INCLUDE_PATH;?>img/galeria/img-ong-com-moldura/galeria-14.jpg">
+					</a>
+					<a rel="galeria-ong" class="img-galeria-single" href="<?php //echo INCLUDE_PATH;?>img/galeria/img-ong-com-moldura/galeria-15.jpg">
+						<img src="<?php //echo INCLUDE_PATH;?>img/galeria/img-ong-com-moldura/galeria-15.jpg">
+					</a>
+
+					<a rel="galeria-ong" class="img-galeria-single" href="<?php //echo INCLUDE_PATH;?>img/galeria/img-ong-com-moldura/galeria-16.jpg">
+						<img src="<?php //echo INCLUDE_PATH;?>img/galeria/img-ong-com-moldura/galeria-16.jpg">
+					</a>
+	-->
+				</div>
+			</div>
+
+		</div><!--galeria-flex-->
+
+	</div><!--container-->
+
+	<div class="outro-valor">
+		<div class="btn-ajuda">
+			<a href="<?php echo INCLUDE_PATH?>enviar-foto">ENVIAR FOTO</a>
+		</div><!--btn-ajuda-->
+	</div><!--outro-valor-->
+
+</section><!--galeria-->
+
+
+	<?php include('pages/noticias.php')?>
+
+
 <script src="<?php echo INCLUDE_PATH;?>js/jquery.js"></script>
-<script src="<?php echo INCLUDE_PATH;?>js/form-home.js"></script>
+<script>
+	/*
+    $(document).ready(function(){
+        var atual = -1;
+        var maximo = $('.galeria-mural').length -1;
+        var timer;
+        var animationDelay = 0.5;
+
+        executarAnimacao();
+        function executarAnimacao(){
+            $('.galeria-mural').hide();
+            timer = setInterval(logicaAnim,animationDelay*1000);
+        }
+
+        function logicaAnim(){
+            atual++;
+            if(atual > maximo){
+                clearInterval(timer);
+                return false;
+            }
+            $('.galeria-mural').eq(atual).fadeIn();
+        }
+    })
+    */
+</script>

@@ -1,0 +1,26 @@
+$(document).ready(function(){
+	$('.doar-btn').click(function(){
+		$(this).addClass('btn-selected');
+		$('.apadrinhar-btn').removeClass('btn-selected');
+		$('.adotar-btn').removeClass('btn-selected');
+		$('.doar-section').slideDown();
+		$('.adotar-section').slideUp();
+		$('.apadrinhar-section').slideUp();
+	})
+	$('.apadrinhar-btn').click(function(){
+		$(this).addClass('btn-selected');
+		$('.doar-btn').removeClass('btn-selected');
+		$('.adotar-btn').removeClass('btn-selected');
+		$('.doar-section').slideUp();
+		$('.adotar-section').slideUp();
+		$('.apadrinhar-section').slideDown();
+	})
+	$('.adotar-btn').click(function(){
+		$(this).addClass('btn-selected');
+		$('.doar-btn').removeClass('btn-selected');
+		$('.apadrinhar-btn').removeClass('btn-selected');
+		$('.doar-section').slideUp();
+		$('.adotar-section').slideDown();
+		$('.apadrinhar-section').slideUp();
+	})
+})
